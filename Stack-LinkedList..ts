@@ -1,12 +1,12 @@
 import { LinkedList } from './LinkedList';
 
-class Stack {
+export class Stack_LinkedList {
   _stack: LinkedList;
+
   constructor() {
     this._stack = new LinkedList();
   }
 
-  // since we prepend here, we need to pop the head
   public push(value: unknown) {
     return this._stack.prepend(value);
   }

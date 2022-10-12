@@ -55,26 +55,45 @@ export class LinkedList {
     return node;
   }
 
+  // delete matching value
   public delete(value: unknown) {
+    // we start by saying while this head exists and this head has the target value
+    // reassign head to the next value
+    // if the head is null, there won't be any iteration
     while (this.head && this.head.value === value) {
       this.head = this.head.next;
     }
 
+    // now we check if the current head is null
+    // if it is, we have nothing else to delete;
+    // so stop the iteration,
+    // we also reassign tail to null as well as
+    // as there is no head, there is no tails
     if (!this.head) {
       this.tail = null;
       return;
     }
 
+    // by here we know the head is a node
+    // so we assign curNode  to the head
     let curNode = this.head;
 
+    // this while loop only runs if there is next node
+    // because we already know the current node does not have the target value
+
     while (curNode.next) {
+      // if the next node has the target value, then we skip this node and attach
+      // current node's next pointer to the item after the next item
       if (curNode.next.value === value) {
         curNode.next = curNode.next.next;
       } else {
+        // else we need to assign current node to the next node so we can continue the iteration
         curNode = curNode.next;
       }
     }
-
+    // finally if the tail is the target value,
+    // we need to update the tail pointer to the curNode
+    // which is guaranteed to be the last node after this iteration
     if (this.tail && this.tail.value === value) {
       this.tail = curNode;
     }
