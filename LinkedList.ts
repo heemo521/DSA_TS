@@ -11,14 +11,11 @@ export class Node {
 export class LinkedList {
   public head: Node | null;
   public tail: Node | null;
-  public length: number;
 
   constructor(value?: unknown) {
     if (value === null || value === undefined) {
       this.head = null;
       this.tail = null;
-      this.length = 0;
-
       return;
     }
 
@@ -26,7 +23,6 @@ export class LinkedList {
 
     this.head = node;
     this.tail = node;
-    this.length = 1;
   }
 
   public append(value: unknown): Node {
@@ -36,8 +32,6 @@ export class LinkedList {
     this.tail = node;
 
     if (!this.head) this.head = node;
-
-    this.length++;
 
     return node;
   }
@@ -50,9 +44,32 @@ export class LinkedList {
 
     if (!this.tail) this.tail = node;
 
-    this.length++;
-
     return node;
+  }
+
+  public insertAfter(value: unknown, referenceNode: Node) {
+    const existingNode = this.find(referenceNode);
+
+    if (existingNode) {
+      const newNode: Node = new Node(value);
+      newNode.next = existingNode.next;
+      existingNode.next = newNode;
+    }
+  }
+
+  public find(value: unknown) {
+    if (!this.head) return null;
+
+    let curNode = this.head;
+
+    while (curNode) {
+      if (curNode.value === value) {
+        return curNode;
+      }
+      curNode = curNode.next;
+    }
+
+    return null;
   }
 
   public delete(value: unknown) {
@@ -80,7 +97,6 @@ export class LinkedList {
     }
   }
 
-  // pops the head and returns it
   public deleteHead(): Node | null {
     if (!this.head) return null;
 
