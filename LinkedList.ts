@@ -42,19 +42,6 @@ export class LinkedList {
     return node;
   }
 
-  public toArray(): unknown[] {
-    const elements = [] as unknown[];
-
-    let curNode = this.head;
-
-    while (curNode) {
-      elements.push(curNode);
-      curNode = curNode.next;
-    }
-
-    return elements;
-  }
-
   public prepend(value: unknown): Node {
     const node: Node = new Node(value);
 
@@ -66,6 +53,20 @@ export class LinkedList {
     this.length++;
 
     return node;
+  }
+
+  // pops the head and returns it
+  public deleteHead(): Node | null {
+    if (!this.head) return null;
+
+    const deletedNode = this.head;
+
+    if (this.head.next) {
+      this.head = this.head.next;
+    } else {
+      this.head = this.tail = null;
+    }
+    return deletedNode;
   }
 
   // WORK IN PROGRESS BELOW HERE IS NOT FIXED YET
@@ -161,6 +162,19 @@ export class LinkedList {
     this.length--;
 
     return node;
+  }
+
+  public toArray(): unknown[] {
+    const elements = [] as unknown[];
+
+    let curNode = this.head;
+
+    while (curNode) {
+      elements.push(curNode);
+      curNode = curNode.next;
+    }
+
+    return elements;
   }
 }
 

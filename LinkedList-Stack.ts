@@ -6,7 +6,17 @@ class Stack {
     this._stack = new LinkedList();
   }
 
-  push(value: unknown) {
+  // since we prepend here, we need to pop the head
+  public push(value: unknown) {
     return this._stack.prepend(value);
+  }
+  public pop() {
+    return this._stack.deleteHead();
+  }
+  public isEmpty(): boolean {
+    return !this._stack.head;
+  }
+  public toArray() {
+    return this._stack.toArray();
   }
 }
