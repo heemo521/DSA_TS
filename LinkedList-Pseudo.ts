@@ -55,7 +55,6 @@ export class LinkedList {
     return node;
   }
 
-  // delete matching value
   public delete(value: unknown) {
     // we start by saying while this head exists and this head has the target value
     // reassign head to the next value
@@ -126,3 +125,21 @@ export class LinkedList {
     return elements;
   }
 }
+
+const linkedList1 = new LinkedList();
+linkedList1.append(1);
+linkedList1.append('hello there');
+linkedList1.append('Max');
+linkedList1.append('Max');
+linkedList1.append(true);
+linkedList1.append(18.51);
+linkedList1.prepend('First value!');
+linkedList1.prepend('First value!');
+
+console.log(linkedList1.toArray());
+
+linkedList1.delete('Max');
+linkedList1.delete('First value!');
+linkedList1.delete(18.51);
+
+console.log(linkedList1.toArray());
