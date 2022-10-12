@@ -1,5 +1,6 @@
 class Stack {
   _items: unknown[];
+
   constructor() {
     this._items = [];
   }
