@@ -7,7 +7,7 @@ export class Queue {
     this._list = new LinkedList();
   }
 
-  public enqueue(value) {
+  public enqueue(value: unknown) {
     return this._list.append(value);
   }
 
