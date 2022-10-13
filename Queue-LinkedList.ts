@@ -1,24 +1,25 @@
 import { LinkedList } from './LinkedList';
 
-class Queue {
-  _list;
+export class Queue {
+  private _list;
+
   constructor() {
     this._list = new LinkedList();
   }
 
-  enqueue(value) {
-    this._items.unshift(value);
+  public enqueue(value) {
+    return this._list.append(value);
   }
 
-  dequeue() {
-    return this._items.pop() || null;
+  public dequeue() {
+    return this._list.deleteHead();
   }
 
-  isEmpty(): boolean {
-    return this._items.length === 0;
+  public isEmpty() {
+    return !this._list.head;
   }
 
-  toArray() {
-    return this._items.slice();
+  public toArray() {
+    return this._list.toArray();
   }
 }
