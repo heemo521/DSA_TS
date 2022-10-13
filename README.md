@@ -21,11 +21,11 @@ tsc --project tsconfig.production.json
 - Resolving Collisions with "Open Addressing"
 
 ### Trees
-#### Definition
-- Tree is a <unidirectional>, <non-linear>  data structure with <edges> that connect <vertices>.
-There is a <root node> and there <are no cycles> 
+#### *Definition*
+- Tree is a **unidirectional**, **non-linear**  data structure with **edges** that connect **vertices**.
+There is a **root node** and there **are no cycles** 
 
-#### Terminology
+#### *Terminology*
 - Node / Vertex : A structure that contains a value
 - Edge: A connection between two nodes
 - Root Node: The top-most node in the tree 
