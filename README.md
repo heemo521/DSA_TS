@@ -20,4 +20,23 @@ tsc --project tsconfig.production.json
 - Resolving Collisions with "Chaining"
 - Resolving Collisions with "Open Addressing"
 
-### Tree
+### Trees
+#### Definition
+- Tree is a <unidirectional>, <non-linear>  data structure with <edges> that connect <vertices>.
+There is a <root node> and there <are no cycles> 
+
+#### Terminology
+- Node / Vertex : A structure that contains a value
+- Edge: A connection between two nodes
+- Root Node: The top-most node in the tree 
+- Sub Tree: A nested tree (i.e. sub tree root node is NOT main tree root node)
+- Path: A sequence of nodes and edges that connects 
+- Distance: The number of edges between two nodes
+- Parent / Child: Two directly connected nodes, parent node is "above" child node
+- Ancestor / Descendant: Two nodes that are connected by multiple parent-child paths
+- Siblings: Two adjacent nodes with the same parent
+- Degree: The number of achild nodes of a given node
+- Level: The distance between a node and the root node
+- Depth: THe maximum level in a tree
+- Breadth: The number of leaves in a tree
+- Size: The total number of a nodes in a tree 
