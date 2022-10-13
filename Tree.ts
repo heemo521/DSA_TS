@@ -25,6 +25,7 @@ export class Node {
 
 export class Tree {
   public root: Node;
+
   constructor(rootValue: unknown) {
     this.root = new Node(rootValue);
   }
