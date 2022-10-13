@@ -1,12 +1,27 @@
 export class HashTable {
   private _buckets: unknown[];
+  public size: number;
   constructor() {
-    this._buckets = Array(100).fill(null);
+    this.size = 1000;
+    this._buckets = Array(this.size).fill(null);
   }
 
-  set(value: string | number) {
-    this._buckets[Math.floor(Math.random() * 100)] = value;
+  private _hash(key: string) {
+    let hash = 0;
+    for (const char of key) {
+      hash += char.charCodeAt(0);
+    }
+    return hash % this.size;
   }
+
+  public set(value: string | number) {
+    const keyHash = this._hash(String(value));
+    this._buckets[keyHash] = value;
+  }
+
+  public get(key: string) { 
+    const keyHash = this._hash(String(key))
+    return this._buckets[keyHash];
 }
 
 //Hashing => key to index
