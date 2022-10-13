@@ -3,9 +3,9 @@
 ## Examples of Data structures written in TS format
 
 - To Compile, run the following command in your command-line in the same directory
-
+```
 tsc --project tsconfig.production.json
-
+```
 ### Linked List
 
 - Time Complexity
