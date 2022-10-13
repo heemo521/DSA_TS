@@ -40,3 +40,7 @@ There is a **root node** and there **are no cycles**
 - Depth: THe maximum level in a tree
 - Breadth: The number of leaves in a tree
 - Size: The total number of a nodes in a tree 
+
+#### *Example*
+- File System 
+- 
