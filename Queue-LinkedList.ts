@@ -1,7 +1,9 @@
+import { LinkedList } from './LinkedList';
+
 class Queue {
-  _items: unknown[];
+  _list;
   constructor() {
-    this._items = [];
+    this._list = new LinkedList();
   }
 
   enqueue(value) {
