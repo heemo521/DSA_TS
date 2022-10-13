@@ -13,3 +13,7 @@
 ### Queue && Queue-Linked List
 
 ### Hash Table
+
+- Resolving Collisions with "Chaining"
+- Resolving Collisions with "Open Addressing"
+- Resizing soon...
