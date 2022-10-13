@@ -10,4 +10,6 @@
 
 ### Stack && Stack-Linked List
 
-### Queue
+### Queue && Queue-Linked List
+
+### Hash Table
