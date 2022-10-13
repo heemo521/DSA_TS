@@ -1,5 +1,5 @@
 export class Stack {
-  _items: unknown[];
+  private _items;
 
   constructor() {
     this._items = [];
@@ -9,11 +9,11 @@ export class Stack {
     this._items.push(item);
   }
 
-  public pop(): unknown {
+  public pop() {
     return this._items.pop();
   }
 
-  public isEmpty(): boolean {
+  public isEmpty() {
     return this._items.length === 0;
   }
   public toArray() {

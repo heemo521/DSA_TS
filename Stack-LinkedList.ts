@@ -1,7 +1,7 @@
 import { LinkedList } from './LinkedList';
 
 export class Stack_LinkedList {
-  _stack: LinkedList;
+  private _stack;
 
   constructor() {
     this._stack = new LinkedList();
@@ -13,7 +13,7 @@ export class Stack_LinkedList {
   public pop() {
     return this._stack.deleteHead();
   }
-  public isEmpty(): boolean {
+  public isEmpty() {
     return !this._stack.head;
   }
   public toArray() {
