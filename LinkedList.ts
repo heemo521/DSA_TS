@@ -60,7 +60,7 @@ export class LinkedList {
   public find(value: unknown) {
     if (!this.head) return null;
 
-    let curNode = this.head;
+    let curNode: Node | null = this.head;
 
     while (curNode) {
       if (curNode.value === value) {

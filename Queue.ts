@@ -1,11 +1,11 @@
 export class Queue {
-  private _items;
+  private _items: unknown[];
 
   constructor() {
     this._items = [];
   }
 
-  public enqueue(value) {
+  public enqueue(value: unknown) {
     this._items.unshift(value);
   }
 
@@ -22,15 +22,15 @@ export class Queue {
   }
 }
 
-var queue = new Queue();
-queue.enqueue('James');
-queue.enqueue('Peter');
-queue.enqueue('Paul');
-console.log(queue.toArray());
-queue.dequeue();
-console.log(queue.toArray());
-queue.dequeue();
-console.log(queue.isEmpty());
-queue.dequeue();
-console.log(queue.isEmpty());
-console.log(queue.dequeue());
+// var queue = new Queue();
+// queue.enqueue('James');
+// queue.enqueue('Peter');
+// queue.enqueue('Paul');
+// console.log(queue.toArray());
+// queue.dequeue();
+// console.log(queue.toArray());
+// queue.dequeue();
+// console.log(queue.isEmpty());
+// queue.dequeue();
+// console.log(queue.isEmpty());
+// console.log(queue.dequeue());

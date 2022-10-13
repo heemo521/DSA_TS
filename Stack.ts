@@ -1,5 +1,5 @@
 export class Stack {
-  private _items;
+  private _items: unknown[];
 
   constructor() {
     this._items = [];
