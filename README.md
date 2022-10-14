@@ -51,6 +51,7 @@ tsc --project tsconfig.json
 - Balanced Tree: Sub-tree depth only differs by 1 at most aka AVL Tree.
 - AVL Tree: BST with self-balancing algorithm (named after the its inventor Georgy *A*delson-*V*elsky and Evgenii *L*andis)
 - Balancing AVL Trees: Left Rotation, Right Rotation, Left-Right Rotation, Right-Left Rotation
+- Balance Factors: Difference between subtree depths (left - right)
 
 #### _Example_
 
