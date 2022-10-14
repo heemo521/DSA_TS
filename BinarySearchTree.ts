@@ -2,7 +2,7 @@ class Node {
   public value: number | null;
   public left: Node | null;
   public right: Node | null;
-  constructor(value: number) {
+  constructor(value: number | null) {
     this.value = value;
     this.left = null;
     this.right = null;
@@ -12,28 +12,39 @@ class Node {
       this.value = value;
       return;
     }
-    if (value < this.value) {
+    if (value > this.value) {
       const newNode = new Node(value);
+      if (this.right) {
+        this.right.add(value);
+        return;
+      }
       this.right = newNode;
       return;
     }
 
-    if (value > this.value) {
+    if (value < this.value) {
       const newNode = new Node(value);
+      if (this.left) {
+        this.left.add(value);
+        return;
+      }
+
       this.left = newNode;
       return;
     }
   }
 
-  public find(value: number) {
+  public find(value: number): Node | undefined {
     if (this.value === value) return this;
 
-    if (this.value < value && this.right) {
+    if (this.value && this.value < value && this.right) {
       return this.right.find(value);
     }
-    if (this.value > value && this.right) {
+    if (this.value && this.value > value && this.left) {
       return this.left.find(value);
     }
+
+    return undefined;
   }
   public remove(value: number) {}
 }
