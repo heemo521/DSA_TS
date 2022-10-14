@@ -45,16 +45,20 @@ class Node {
     if (!identifiedNode) {
       return;
     }
-
+    // If we the target node to remove does not have any children, then we can just remove it from its parent
     if (!identifiedNode.left && !identifiedNode.right) {
       identifiedNode.parent?.removeNode(identifiedNode);
       return;
     }
 
     if (identifiedNode.left && identifiedNode.right) {
-    } else {
-      const childNode = identifiedNode.left || identifiedNode.right;
+      identifiedNode.parent?.removeNode(identifiedNode);
+      return;
+    }
 
+    const childNode = identifiedNode.left || identifiedNode.right;
+
+    if (childNode) {
       identifiedNode.left = childNode.left;
       identifiedNode.right = childNode.right;
       identifiedNode.value = childNode.value;
