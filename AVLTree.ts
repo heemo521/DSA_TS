@@ -11,12 +11,20 @@ class Node {
     this.parent = null;
   }
 
-  get leftDepth(): number {}
+  get leftDepth(): number {
+    return this.left ? this.left.leftDepth + 1 : 0;
+  }
 
-  get rightDepth(): number {}
-  get depth(): number {}
+  get rightDepth(): number {
+    return this.right ? this.right.rightDepth + 1 : 0;
+  }
+  get depth(): number {
+    return Math.max(this.leftDepth, this.rightDepth);
+  }
 
-  get balanceFactor(): number {}
+  get balanceFactor(): number {
+    return this.leftDepth - this.rightDepth;
+  }
 
   public add(value: number) {
     if (!this.value) {
