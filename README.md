@@ -46,9 +46,12 @@ tsc --project tsconfig.json
 - Depth: THe maximum level in a tree
 - Breadth: The number of leaves in a tree
 - Size: The total number of a nodes in a tree
+- Binary-Search-Tree:
+- AVL Tree: BST with self-balancing algorithm (named after the its inventor Georgy *A*delson-*V*elsky and Evgenii *L*andis)
+- Balanced Tree: Sub-tree depth only differs by 1 at most
 
 #### _Example_
 
 - File System
-  -- Depth-First-Search: Dig into the tree first and explore sibling tress step by step
-  -- Breadth-First-Search: Evaluate all sibling values first before you dig into the tree in depth
+  - Depth-First-Search: Dig into the tree first and explore sibling tress step by step
+  - Breadth-First-Search: Evaluate all sibling values first before you dig into the tree in depth
