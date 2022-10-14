@@ -57,16 +57,16 @@ export class Node {
     }
   }
   // // DEPTH-FIRST
-  // public find(value: string): Node | undefined {
-  //   for (const child of this.children) {
-  //     if (child.value === value) return child;
+  public findDepth(value: string): Node | undefined {
+    for (const child of this.children) {
+      if (child.value === value) return child;
 
-  //     const nestedChildNode: Node | undefined = child.find(value);
-  //     if (nestedChildNode) return nestedChildNode;
-  //   }
-  // }
+      const nestedChildNode: Node | undefined = child.find(value);
+      if (nestedChildNode) return nestedChildNode;
+    }
+  }
   // Breadth-FIRST
-  public find(value: string): Node | undefined {
+  public findBreadth(value: string): Node | undefined {
     for (const child of this.children) {
       if (child.value === value) return child;
     }
@@ -93,10 +93,16 @@ export class Tree_FileSystem {
     return this.root.removeNode(path);
   }
 
-  public find(value: string) {
+  public findFile(value: string) {
     if (this.root.value === value) return this.root;
 
-    return this.root.find(value);
+    return this.root.findDepth(value);
+  }
+
+  public findFolder(value: string) {
+    if (this.root.value === value) return this.root;
+
+    return this.root.findBreadth(value);
   }
 }
 
