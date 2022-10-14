@@ -52,8 +52,22 @@ class Node {
     }
 
     if (identifiedNode.left && identifiedNode.right) {
-      identifiedNode.parent?.removeNode(identifiedNode);
-      return;
+      const replacementNode = identifiedNode.right.findNext();
+      if (
+        replacementNode.value &&
+        replacementNode.value !== identifiedNode.right.value
+      ) {
+        this.remove(replacementNode.value);
+        identifiedNode.value = replacementNode.value;
+        identifiedNode.left.parent = identifiedNode;
+        identifiedNode.right.parent = identifiedNode;
+      } else {
+        identifiedNode.value = identifiedNode.right.value;
+        identifiedNode.right = identifiedNode.right.right;
+        identifiedNode.left.parent = identifiedNode;
+
+        if (identifiedNode.right) identifiedNode.right.parent = identifiedNode;
+      }
     }
 
     const childNode = identifiedNode.left || identifiedNode.right;
@@ -86,6 +100,12 @@ class Node {
       return this.left.find(value);
 
     return undefined;
+  }
+
+  public findNext(): Node {
+    if (!this.left) return this;
+
+    return this.left.findNext();
   }
 }
 
