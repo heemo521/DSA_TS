@@ -15,27 +15,50 @@ export class Node {
     if (segments.length === 0) return;
     if (segments.length === 1) {
       const node = new Node(segments[0], this);
-      const index = this.children.length - 1;
       this.children.push(node);
-      return { node, index };
+
+      return { node, index: this.children.length - 1 };
     }
-    const targetFolder = this.children.find(
-      (node) => node.value === segments[0]
-    );
-    if (targetFolder) {
-      targetFolder.addNode(segments.slice(1).join(''));
-    } else {
-      const createFolder = new Node(segments[0], this);
-      createFolder.addNode(segments.slice(1).join(''));
+
+    const findFolder = this.children.find((node) => node.value === segments[0]);
+
+    if (findFolder) findFolder.addNode(segments.slice(1).join('/'));
+    else {
+      const createdFolder = new Node(segments[0], this);
+
+      createdFolder.addNode(segments.slice(1).join('/'));
+      this.children.push(createdFolder);
+
+      return { node: createdFolder, index: this.children.length - 1 };
     }
   }
 
-  public removeNode(index: number) {
-    this.children.splice(index, 1);
+  public removeNode(path: string): Node[] | undefined {
+    const segments = path.split('/');
+
+    if (segments.length === 0) return undefined;
+
+    if (segments.length === 1) {
+      const targetNodeIndex = this.children.findIndex(
+        (node) => node.value === segments[0]
+      );
+
+      if (targetNodeIndex === -1) return undefined;
+      return this.children.splice(targetNodeIndex, 1);
+    }
+
+    if (segments.length > 1) {
+      const findFolder = this.children.find(
+        (node) => node.value === segments[0]
+      );
+
+      if (!findFolder) return undefined;
+      return findFolder.removeNode(segments.slice(1).join('/'));
+    }
   }
 }
 
-export class Tree {
+export class Tree_FileSystem {
   public root: Node;
 
   constructor(rootValue: unknown) {
@@ -47,14 +70,16 @@ export class Tree {
   }
 
   public removeFile(path: string) {
-    return this.root.addNode(path);
+    return this.root.removeNode(path);
   }
 }
 
-/*** Example: FILE SYSTEM ***/
-const filesystem = new Tree('/');
-filesystem.addFile('/documents/personal/tax.docx');
-filesystem.addFile('/games/cod.exe');
-filesystem.addFile('/games/cod2.exe');
-filesystem.removeFile('/games/cod.exe');
-console.log(filesystem);
+// /*** Example: FILE SYSTEM ***/
+// const filesystem = new Tree_FileSystem('/');
+// filesystem.addFile('documents/personal/tax.docx');
+// filesystem.addFile('games/cod.exe');
+// filesystem.addFile('games/cod2.exe');
+// console.log(filesystem.removeFile('games/cod.exe'));
+// console.log(filesystem.removeFile('games/codfdsf.exe'));
+// console.log(filesystem.removeFile('games/cod2.exe'));
+// console.log(filesystem);
