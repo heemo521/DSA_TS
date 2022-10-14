@@ -2,11 +2,13 @@ class Node {
   public value: number | null;
   public left: Node | null;
   public right: Node | null;
+  public parent: Node | null;
 
   constructor(value: number | null) {
     this.value = value;
     this.left = null;
     this.right = null;
+    this.parent = null;
   }
 
   public add(value: number) {
@@ -15,22 +17,57 @@ class Node {
       return;
     }
     if (value > this.value) {
-      const newNode = new Node(value);
       if (this.right) {
         this.right.add(value);
         return;
       }
+      const newNode = new Node(value);
       this.right = newNode;
+      newNode.parent = this;
       return;
     }
 
     if (value < this.value) {
-      const newNode = new Node(value);
       if (this.left) {
         this.left.add(value);
         return;
       }
+      const newNode = new Node(value);
+      newNode.parent = this;
       this.left = newNode;
+      return;
+    }
+  }
+
+  public remove(value: number) {
+    const identifiedNode = this.find(value);
+
+    if (!identifiedNode) {
+      return;
+    }
+
+    if (!identifiedNode.left && !identifiedNode.right) {
+      identifiedNode.parent?.removeNode(identifiedNode);
+      return;
+    }
+
+    if (identifiedNode.left && identifiedNode.right) {
+    } else {
+      const childNode = identifiedNode.left || identifiedNode.right;
+
+      identifiedNode.left = childNode.left;
+      identifiedNode.right = childNode.right;
+      identifiedNode.value = childNode.value;
+    }
+  }
+
+  private removeNode(node: Node) {
+    if (this.left && this.left === node) {
+      this.left = null;
+      return;
+    }
+    if (this.right && this.right === node) {
+      this.right = null;
       return;
     }
   }
@@ -46,7 +83,6 @@ class Node {
 
     return undefined;
   }
-  public remove(value: number) {}
 }
 
 export class Tree {
@@ -60,18 +96,24 @@ export class Tree {
   public remove(value: number) {
     this.root.remove(value);
   }
+  public find(value: number): Node | undefined {
+    return this.root.find(value);
+  }
 }
 
 const SearchTree = new Tree();
 
-SearchTree.add(10);
 SearchTree.add(2);
-SearchTree.add(5);
-SearchTree.add(13);
-SearchTree.add(23);
+SearchTree.add(6);
+SearchTree.add(20);
+SearchTree.add(25);
+SearchTree.add(39);
+console.log('Before REMOVE! ' + SearchTree.find(39)?.value);
+SearchTree.remove(39);
+console.log('Before REMOVE! ' + SearchTree.find(20)?.value);
+SearchTree.remove(20);
 
 console.log('added', SearchTree);
-
-SearchTree.remove(2);
-
-console.log(SearchTree);
+console.log('After REMOVE! ' + SearchTree.find(5)?.value);
+console.log('After REMOVE! ' + SearchTree.find(20)?.value);
+console.log('After REMOVE! ' + SearchTree.find(39)?.value);
