@@ -56,6 +56,26 @@ export class Node {
       return findFolder.removeNode(segments.slice(1).join('/'));
     }
   }
+  // // DEPTH-FIRST
+  // public find(value: string): Node | undefined {
+  //   for (const child of this.children) {
+  //     if (child.value === value) return child;
+
+  //     const nestedChildNode: Node | undefined = child.find(value);
+  //     if (nestedChildNode) return nestedChildNode;
+  //   }
+  // }
+  // Breadth-FIRST
+  public find(value: string): Node | undefined {
+    for (const child of this.children) {
+      if (child.value === value) return child;
+    }
+
+    for (const child of this.children) {
+      const nestedChildNode: Node | undefined = child.find(value);
+      if (nestedChildNode) return nestedChildNode;
+    }
+  }
 }
 
 export class Tree_FileSystem {
@@ -72,6 +92,12 @@ export class Tree_FileSystem {
   public removeFile(path: string) {
     return this.root.removeNode(path);
   }
+
+  public find(value: string) {
+    if (this.root.value === value) return this.root;
+
+    return this.root.find(value);
+  }
 }
 
 // /*** Example: FILE SYSTEM ***/
@@ -82,4 +108,5 @@ export class Tree_FileSystem {
 // console.log(filesystem.removeFile('games/cod.exe'));
 // console.log(filesystem.removeFile('games/codfdsf.exe'));
 // console.log(filesystem.removeFile('games/cod2.exe'));
-// console.log(filesystem);
+
+// console.log(filesystem.find('personal'));
