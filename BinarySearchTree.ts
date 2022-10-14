@@ -2,11 +2,13 @@ class Node {
   public value: number | null;
   public left: Node | null;
   public right: Node | null;
+
   constructor(value: number | null) {
     this.value = value;
     this.left = null;
     this.right = null;
   }
+
   public add(value: number) {
     if (!this.value) {
       this.value = value;
@@ -28,7 +30,6 @@ class Node {
         this.left.add(value);
         return;
       }
-
       this.left = newNode;
       return;
     }
@@ -37,12 +38,11 @@ class Node {
   public find(value: number): Node | undefined {
     if (this.value === value) return this;
 
-    if (this.value && this.value < value && this.right) {
+    if (this.value && this.value < value && this.right)
       return this.right.find(value);
-    }
-    if (this.value && this.value > value && this.left) {
+
+    if (this.value && this.value > value && this.left)
       return this.left.find(value);
-    }
 
     return undefined;
   }
@@ -61,3 +61,17 @@ export class Tree {
     this.root.remove(value);
   }
 }
+
+const SearchTree = new Tree();
+
+SearchTree.add(10);
+SearchTree.add(2);
+SearchTree.add(5);
+SearchTree.add(13);
+SearchTree.add(23);
+
+console.log('added', SearchTree);
+
+SearchTree.remove(2);
+
+console.log(SearchTree);
