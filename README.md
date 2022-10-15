@@ -62,3 +62,8 @@ tsc --project tsconfig.json
   - Breadth-First-Search: Evaluate all sibling values first before you dig into the tree in depth
 
 ### Priority Queue
+
+#### Min-Heap && Max-Heap
+
+- (Min) Heaps are Trees where the parent node values are smaller or equal than the child node values
+  (for a "max heap", it's the other way around).
