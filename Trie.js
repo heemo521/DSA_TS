@@ -1,6 +1,6 @@
 'use strict';
 // exports.__esModule = true;
-// exports.Trie = exports.TrieNode = void 0;
+// // exports.Trie = exports.TrieNode = void 0;
 var TrieNode = /** @class */ (function () {
   function TrieNode() {
     this.value = null;
@@ -26,6 +26,17 @@ var Trie = /** @class */ (function () {
     curNode.value = value;
     return curNode;
   };
+  Trie.prototype.search = function (key) {
+    var curNode = this.root;
+    for (var i = 0; i < key.length; i++) {
+      var alphabetIndex = key[i].charCodeAt(0) - 97;
+      if (!curNode.children[alphabetIndex]) {
+        return null;
+      }
+      curNode = curNode.children[alphabetIndex];
+    }
+    return curNode.value;
+  };
   return Trie;
 })();
 // exports.Trie = Trie;
@@ -34,3 +45,5 @@ trie.insert('a', 'apple');
 trie.insert('ass', [',ax', 'fsdf']);
 trie.insert('asking', 1234);
 console.log(trie);
+console.log(trie.search('a'));
+console.log(trie.search('ass'));

@@ -34,19 +34,23 @@ export class Trie {
     for (let i = 0; i < key.length; i++) {
       const alphabetIndex = key[i].charCodeAt(0) - 97;
 
-      if (!curNode.children[alphabetIndex]) {
-        return null;
-      }
+      if (!curNode.children[alphabetIndex]) return null;
+
       curNode = curNode.children[alphabetIndex];
     }
-    return curNode.value;
+    return curNode.value ? curNode : null;
+  }
+
+  public delete(key: string) {
+    const node = this.search(key);
+    if (node) node.value = null;
   }
 }
 
-const trie = new Trie();
-
-trie.insert('a', 'apple');
-trie.insert('ass', [',ax', 'fsdf']);
-trie.insert('asking', 1234);
-
-console.log(trie);
+// var trie = new Trie();
+// trie.insert('a', 'apple');
+// trie.insert('ass', [',ax', 'fsdf']);
+// trie.insert('asking', 1234);
+// console.log(trie);
+// console.log(trie.search('a'));
+// console.log(trie.search('ass'));
