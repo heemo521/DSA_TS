@@ -55,16 +55,7 @@ class PriorityQueue {
     }
   }
 }
-const heap = [250, 197, 85, 101, 12, 40, 15];
-//                 250
-//               /     \
-//            197       85
-//           /  \      /  \
-//         101  12   40    15
 
-// parentIndex = Math.floor((childIndex + 1) / 2) - 1
-// To find the parent of number 12,
-// Math.floor((4 + 1) / 2) - 1 = 1  => heap[1] is 197
 
 var queue = new PriorityQueue();
 queue.insert('Clean up a room', 5);
