@@ -28,6 +28,19 @@ export class Trie {
 
     return curNode;
   }
+
+  public search(key: string) {
+    let curNode = this.root;
+    for (let i = 0; i < key.length; i++) {
+      const alphabetIndex = key[i].charCodeAt(0) - 97;
+
+      if (!curNode.children[alphabetIndex]) {
+        return null;
+      }
+      curNode = curNode.children[alphabetIndex];
+    }
+    return curNode.value;
+  }
 }
 
 const trie = new Trie();
