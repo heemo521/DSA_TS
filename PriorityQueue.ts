@@ -31,11 +31,33 @@ class PriorityQueue {
       currentNode.next = newNode;
     }
   }
-}
 
-const queue = new PriorityQueue();
+  public process() {
+    if (!this.first) {
+      return null;
+    }
+    const first = this.first;
+
+    this.first = this.first.next || null;
+    return first;
+  }
+
+  public print() {
+    let count = 1;
+    let currentNode = this.first;
+    console.log('TO DO');
+
+    while (currentNode) {
+      console.log(
+        `${count++}. ${currentNode.value} | Priority #${currentNode.priority}`
+      );
+      currentNode = currentNode.next;
+    }
+  }
+}
+var queue = new PriorityQueue();
 queue.insert('Clean up a room', 5);
 queue.insert('Do taxes', 99);
+queue.insert('Get a job', 1000000);
 queue.insert('Learn to code', 105);
-
-console.log(queue);
+queue.print();
