@@ -1,4 +1,4 @@
-class Node {
+export class Node {
   public value: number | null;
   public left: Node | null;
   public right: Node | null;
@@ -140,8 +140,30 @@ export class Tree {
   }
 }
 
-const AVLTree = new Tree();
-AVLTree.add(1);
-AVLTree.add(2);
-AVLTree.add(3);
-console.log(AVLTree); // right heavy unbalanced tree
+export class AVLTree extends Tree {
+  public add(value: number) {
+    super.add(value);
+
+    let curNode = this.root.find(value);
+
+    if (curNode) this.balance(curNode);
+  }
+  public remove(value: number) {
+    super.remove(value);
+
+    let curNode = this.root.find(value);
+
+    if (curNode) this.balance(curNode);
+  }
+
+  private balance(node: Node) {
+    if (node.balanceFactor < -1) {
+     }
+  }
+}
+
+const tree = new Tree();
+tree.add(1);
+tree.add(2);
+tree.add(3);
+console.log(tree); // right heavy unbalanced tree
