@@ -163,3 +163,38 @@ tree.add(1);
 tree.add(2);
 tree.add(3);
 console.log(tree); // right heavy unbalanced tree
+
+/** LEFT ROTATION */
+/**
+ * 1           2
+ *  \         / \
+ *   2   =>  1   3
+ *    \
+ *     3
+ */
+
+/** RIGHT ROTATION */
+/**
+ *      3       2
+ *     /       / \
+ *    2   =>  1   3
+ *   /
+ *  1
+ */
+
+/** LEFT-RIGHT ROTATION */
+/**
+ *     3        3     2
+ *    /        /     / \
+ *   1   =>   2  => 1   3
+ *    \      /
+ *     2    1
+ */
+/** RIGHT-LEFT ROTATION */
+/**
+ * 1      1         2
+ *  \      \       / \
+ *   3  =>  2  => 1   3
+ *   /       \
+ *  2         3
+ */
