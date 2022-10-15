@@ -61,7 +61,7 @@ export class Node {
     for (const child of this.children) {
       if (child.value === value) return child;
 
-      const nestedChildNode: Node | undefined = child.find(value);
+      const nestedChildNode: Node | undefined = child.findDepth(value);
       if (nestedChildNode) return nestedChildNode;
     }
   }
@@ -72,7 +72,7 @@ export class Node {
     }
 
     for (const child of this.children) {
-      const nestedChildNode: Node | undefined = child.find(value);
+      const nestedChildNode: Node | undefined = child.findBreadth(value);
       if (nestedChildNode) return nestedChildNode;
     }
   }
