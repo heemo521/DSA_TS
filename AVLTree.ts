@@ -154,8 +154,26 @@ export class AVLTree extends Tree {
 
   private balance(node: Node) {
     if (node.balanceFactor < -1) {
+      if (node.right && node.right.balanceFactor < 0) {
+        this.rotateLeft(node);
+      } else if (node.right && node.right.balanceFactor > 0) {
+        this.rotateRightLeft(node);
+      }
+    }
+    if (node.balanceFactor > 1) {
+      if (node.left && node.left.balanceFactor > 0) {
+        this.rotateRight(node);
+      } else if (node.left && node.left.balanceFactor < 0) {
+        this.rotateLeftRight(node);
+      }
     }
   }
+
+  //**TODO: Implement... */
+  private rotateLeft(node: Node) {}
+  private rotateRight(node: Node) {}
+  private rotateRightLeft(node: Node) {}
+  private rotateLeftRight(node: Node) {}
 }
 
 const tree = new Tree();

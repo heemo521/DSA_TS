@@ -47,11 +47,13 @@ tsc --project tsconfig.json
 - Breadth: The number of leaves in a tree
 - Size: The total number of a nodes in a tree
 
-- Binary-Search-Tree:
+- Binary-Search-Tree: TWo children at most with values on the left that are less than the root node and values on the right that are greater than the root node
 - Balanced Tree: Sub-tree depth only differs by 1 at most aka AVL Tree.
 - AVL Tree: BST with self-balancing algorithm (named after the its inventor Georgy *A*delson-*V*elsky and Evgenii *L*andis)
 - Balancing AVL Trees: Left Rotation, Right Rotation, Left-Right Rotation, Right-Left Rotation
 - Balance Factors: Difference between subtree depths (left - right)
+
+-Trie: Tree structure with nodes each with 26 children representing alphabets
 
 #### _Example_
 
