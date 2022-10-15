@@ -74,23 +74,21 @@ export class Node {
       ) {
         this.remove(replacementNode.value);
         identifiedNode.value = replacementNode.value;
-        identifiedNode.left.parent = identifiedNode;
-        identifiedNode.right.parent = identifiedNode;
       } else {
         identifiedNode.value = identifiedNode.right.value;
         identifiedNode.right = identifiedNode.right.right;
-        identifiedNode.left.parent = identifiedNode;
-
-        if (identifiedNode.right) identifiedNode.right.parent = identifiedNode;
       }
-    }
 
-    const childNode = identifiedNode.left || identifiedNode.right;
+      if (identifiedNode.right) identifiedNode.right.parent = identifiedNode;
+      identifiedNode.left.parent = identifiedNode;
+    } else {
+      const childNode = identifiedNode.left || identifiedNode.right;
 
-    if (childNode) {
-      identifiedNode.left = childNode.left;
-      identifiedNode.right = childNode.right;
-      identifiedNode.value = childNode.value;
+      if (childNode) {
+        identifiedNode.left = childNode.left;
+        identifiedNode.right = childNode.right;
+        identifiedNode.value = childNode.value;
+      }
     }
   }
 
@@ -151,14 +149,12 @@ export class AVLTree extends Tree {
   public remove(value: number) {
     super.remove(value);
 
-    let curNode = this.root.find(value);
-
-    if (curNode) this.balance(curNode);
+    this.balance(this.root);
   }
 
   private balance(node: Node) {
     if (node.balanceFactor < -1) {
-     }
+    }
   }
 }
 
