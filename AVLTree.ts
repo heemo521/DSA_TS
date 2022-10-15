@@ -164,37 +164,38 @@ tree.add(2);
 tree.add(3);
 console.log(tree); // right heavy unbalanced tree
 
+/** Each number represents a node and (number) in the parentheses is the node's balanceFactor */
 /** LEFT ROTATION */
 /**
- * 1           2
- *  \         / \
- *   2   =>  1   3
+ * 1 (-2)            2 (0)
+ *  \              /   \
+ *   2 (-1) =>   1 (0) 3 (0)
  *    \
- *     3
+ *     3 (0)
  */
 
 /** RIGHT ROTATION */
 /**
- *      3       2
- *     /       / \
- *    2   =>  1   3
+ *      3  (2)       2
+ *     /            / \
+ *    2 (1)  =>    1   3
  *   /
- *  1
+ *  1 (0)
  */
 
 /** LEFT-RIGHT ROTATION */
 /**
- *     3        3     2
- *    /        /     / \
- *   1   =>   2  => 1   3
- *    \      /
- *     2    1
+ *     3  (2)       3 (2)       2
+ *    /            /           / \
+ *   1 (-1)  =>   2 (1)  =>   1  3
+ *    \          /
+ *     2 (0)    1 (0)
  */
 /** RIGHT-LEFT ROTATION */
 /**
- * 1      1         2
- *  \      \       / \
- *   3  =>  2  => 1   3
- *   /       \
- *  2         3
+ * 1 (-2)    1  (-2)            2
+ *  \         \                / \
+ *   3 (1) =>  2  (-1)  =>    1   3
+ *   /          \
+ *  2 (0)        3  (0)
  */
