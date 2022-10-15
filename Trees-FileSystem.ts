@@ -116,3 +116,5 @@ export class Tree_FileSystem {
 // console.log(filesystem.removeFile('games/cod2.exe'));
 
 // console.log(filesystem.find('personal'));
+//           /
+// game documents xsy dsfjioj sdflkjlds
