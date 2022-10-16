@@ -56,7 +56,6 @@ class PriorityQueue {
   }
 }
 
-
 var queue = new PriorityQueue();
 queue.insert('Clean up a room', 5);
 queue.insert('Do taxes', 99);

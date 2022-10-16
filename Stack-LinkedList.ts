@@ -1,6 +1,6 @@
 import { LinkedList } from './LinkedList';
 
-export class Stack_LinkedList {
+class Stack_LinkedList {
   private _stack;
 
   constructor() {

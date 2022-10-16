@@ -1,4 +1,4 @@
-export class TrieNode {
+class TrieNode {
   public value: null | unknown;
   public children: TrieNode[];
   constructor() {
@@ -7,7 +7,7 @@ export class TrieNode {
   }
 }
 
-export class Trie {
+class Trie {
   public root: TrieNode;
   constructor() {
     this.root = new TrieNode();

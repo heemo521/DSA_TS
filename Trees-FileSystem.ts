@@ -78,7 +78,7 @@ export class Node {
   }
 }
 
-export class Tree_FileSystem {
+class Tree_FileSystem {
   public root: Node;
 
   constructor(rootValue: unknown) {

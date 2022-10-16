@@ -23,7 +23,7 @@ export class Node {
   }
 }
 
-export class Tree {
+class Tree {
   public root: Node;
 
   constructor(rootValue: unknown) {
