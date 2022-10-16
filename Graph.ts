@@ -29,17 +29,22 @@ class Graph {
     } else this._edges[startNode] = [endNode];
   }
 
-  public removeNode(identifier: number) {
-    delete this._nodes[identifier]; // OR Reflect.deleteProperty(this._nodes, identifier);
-    delete this._edges[identifier];
+  public removeNode(nodeIdentifier: number) {
+    delete this._nodes[nodeIdentifier];
+    Reflect.deleteProperty(this._edges, nodeIdentifier);
 
-    for (const nodeIdentifier in this._edges)
-      this.removeEdge(identifier, +nodeIdentifier);
+    for (const edgeIdentifier in this._edges)
+      this.removeEdge(nodeIdentifier, +edgeIdentifier);
   }
 
   public removeEdge(startNode: number, endNode: number) {
-    const removedNodeIndex = this._edges[endNode].indexOf(startNode);
-    if (removedNodeIndex >= 0) this._edges[endNode].splice(removedNodeIndex, 1);
+    if (!this._nodes[startNode]) return null;
+
+    const removedNodeIndex = this._edges[startNode].indexOf(endNode);
+
+    if (removedNodeIndex === -1) return null;
+
+    this._edges[startNode].splice(removedNodeIndex, 1);
   }
 
   public hasEdge(startNode: number, endNode: number) {
@@ -47,7 +52,29 @@ class Graph {
     return this._edges[startNode].indexOf(endNode) > -1;
   }
 
-  public getAll_edges(node: number) {
+  public getAllEdges(node: number) {
     return this._edges[node];
   }
 }
+
+const graph = new Graph();
+
+graph.addNode(1, 'Max');
+graph.addNode(2, 'Manuel');
+graph.addNode(3, 'Jules');
+
+graph.addEdge(1, 2);
+graph.addEdge(1, 3);
+graph.addEdge(3, 2);
+
+console.log(graph.hasEdge(3, 2));
+console.log(graph.hasEdge(2, 1));
+
+console.log(graph.getAllEdges(1));
+console.log(graph.getAllEdges(2));
+console.log(graph.getAllEdges(3));
+
+console.log(graph.removeEdge(2, 1));
+console.log(graph.removeEdge(1, 3));
+
+console.log(graph);
